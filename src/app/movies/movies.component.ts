@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Movie } from '../movie';
+import { MOVIES } from '../mock-movies'
 
 @Component({
   selector: 'app-movies',
@@ -8,16 +9,17 @@ import { Movie } from '../movie';
 })
 export class MoviesComponent implements OnInit {
 
-  // movie = '3 Idiots';
+  movies =  MOVIES;
 
-  movie: Movie = {
-    id: 20453,
-    name: '3 Idiots'
-  };
+  selectedMovie: Movie;
 
   constructor() { }
 
   ngOnInit() {
+  }
+
+  onSelect(movie: Movie): void {
+    this.selectedMovie = movie;
   }
 
 }
