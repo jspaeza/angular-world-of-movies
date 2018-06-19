@@ -6,9 +6,7 @@ import { Movie } from './movie';
 import { MOVIES } from './mock-movies';
 import { MessageService } from './message.service';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable({providedIn: 'root'})
 export class MovieService {
 
   constructor(private messageService: MessageService) { }
@@ -17,5 +15,11 @@ export class MovieService {
     // TODO: send the message _after_ fetching the movies
     this.messageService.add('MovieService: fetched movies');
     return of(MOVIES);
+  }
+
+  getMovie(id: number): Observable<Movie> {
+    // TODO: send the message _after_ fetching the Movie
+    this.messageService.add(`MovieService: fetched movie id=${id}`);
+    return of(MOVIES.find(movie => movie.id === id));
   }
 }
